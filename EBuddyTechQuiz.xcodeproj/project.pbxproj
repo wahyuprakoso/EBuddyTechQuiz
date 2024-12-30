@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4743FC952D223C8A00B32D40 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4743FC942D223C8A00B32D40 /* FirebaseAuth */; };
+		4743FC972D223C8A00B32D40 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4743FC962D223C8A00B32D40 /* FirebaseFirestore */; };
+		4743FC992D223C8A00B32D40 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4743FC982D223C8A00B32D40 /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4743FC752D22213D00B32D40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4743FC952D223C8A00B32D40 /* FirebaseAuth in Frameworks */,
+				4743FC972D223C8A00B32D40 /* FirebaseFirestore in Frameworks */,
+				4743FC992D223C8A00B32D40 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = EBuddyTechQuiz;
 			packageProductDependencies = (
+				4743FC942D223C8A00B32D40 /* FirebaseAuth */,
+				4743FC962D223C8A00B32D40 /* FirebaseFirestore */,
+				4743FC982D223C8A00B32D40 /* FirebaseStorage */,
 			);
 			productName = EBuddyTechQuiz;
 			productReference = 4743FC642D22213A00B32D40 /* EBuddyTechQuiz.app */;
@@ -195,6 +207,9 @@
 			);
 			mainGroup = 4743FC5B2D22213A00B32D40;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4743FC932D223C8900B32D40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4743FC652D22213A00B32D40 /* Products */;
 			projectDirPath = "";
@@ -408,7 +423,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = EBuddy.EBuddyTechQuiz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EBuddy.EBuddyTechQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -436,7 +451,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = EBuddy.EBuddyTechQuiz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EBuddy.EBuddyTechQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -552,6 +567,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4743FC932D223C8900B32D40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4743FC942D223C8A00B32D40 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4743FC932D223C8900B32D40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		4743FC962D223C8A00B32D40 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4743FC932D223C8900B32D40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		4743FC982D223C8A00B32D40 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4743FC932D223C8900B32D40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4743FC5C2D22213A00B32D40 /* Project object */;
 }
