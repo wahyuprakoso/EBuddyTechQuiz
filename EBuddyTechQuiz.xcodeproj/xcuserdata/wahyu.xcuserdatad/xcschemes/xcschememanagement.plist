@@ -4,10 +4,43 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Debug.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>EBuddyTechQuiz.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Promises (Playground).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Staging.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4743FC632D22213A00B32D40</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4743FC732D22213D00B32D40</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4743FC7D2D22213D00B32D40</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    let APP_ENV: String = {
+            Bundle.main.object(forInfoDictionaryKey: "APP_ENV") as? String ?? "unknown"
+        }()
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(APP_ENV)
         }
         .padding()
     }

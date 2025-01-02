@@ -1,0 +1,8 @@
+//
+//  Debug.xcconfig
+//  EBuddyTechQuiz
+//
+//  Created by Wahyu Prakoso on 02/01/25.
+//
+
+APP_ENV = staging
