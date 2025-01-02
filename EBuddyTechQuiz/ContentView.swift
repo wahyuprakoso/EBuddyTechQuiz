@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct ContentView: View {
     let APP_ENV: String = {
@@ -19,6 +20,22 @@ struct ContentView: View {
             Text(APP_ENV)
         }
         .padding()
+        .task {
+            getData()
+        }
+    }
+    
+    func getData() {
+        let db = Firestore.firestore()
+        db.collection("USERS").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching documents: \(error)")
+            } else {
+                for document in snapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
     }
 }
 
