@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ListUserView: View {
-    @StateObject private var viewModel = ListUserViewModel()
+    @ObservedObject private var viewModel = UserViewModel.shared
+    @State private var showModal = false
+    @State private var selectedUser:User?
     
     var body: some View {
         NavigationView {
@@ -29,12 +31,34 @@ struct ListUserView: View {
                             Text(user.email ?? "-")
                                 .font(.body)
                         }
+                        .onTapGesture {
+                            if user == selectedUser {
+                                showModal = true
+                            }else{
+                                selectedUser = user
+                            }
+                        }
                     }
                 }
             }
             .navigationTitle("Users")
-            .task {
-                viewModel.loadUsers()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        selectedUser = nil
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showModal) {
+                AddUserView(user: selectedUser)
+            }
+            .onChange(of: selectedUser) { oldValue, newValue in
+                showModal = true
+            }
+            .onAppear {
+                viewModel.fetchUsers()
             }
         }
     }
