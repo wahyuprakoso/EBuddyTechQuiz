@@ -9,34 +9,37 @@ import SwiftUI
 import FirebaseFirestore
 
 struct ContentView: View {
-    let APP_ENV: String = {
-            Bundle.main.object(forInfoDictionaryKey: "APP_ENV") as? String ?? "unknown"
-        }()
+    let items: [MenuItem] = [
+        MenuItem(id: UUID(), name: "List User"),
+        MenuItem(id: UUID(), name: "Card")
+    ]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text(APP_ENV)
-        }
-        .padding()
-        .task {
-            getData()
-        }
-    }
-    
-    func getData() {
-        let db = Firestore.firestore()
-        db.collection("USERS").getDocuments { snapshot, error in
-            if let error = error {
-                print("Error fetching documents: \(error)")
-            } else {
-                for document in snapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+        NavigationView{
+            List(items) { item in
+                NavigationLink(destination: destinationView(item:item)) {
+                    Text(item.name)
+                        .font(.body)
                 }
             }
         }
     }
+    
+    @ViewBuilder
+    func destinationView(item: MenuItem) -> some View {
+        switch item.name {
+        case "List User":
+            ListUserView()
+        case "Card":
+            CardView()
+        default:
+            Text("Coming Soon")
+        }
+    }
+}
+
+struct MenuItem: Identifiable {
+    let id: UUID
+    let name: String
 }
 
 #Preview {
