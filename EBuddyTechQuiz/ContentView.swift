@@ -9,16 +9,25 @@ import SwiftUI
 import FirebaseFirestore
 
 struct ContentView: View {
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
     let items: [MenuItem] = [
         MenuItem(id: UUID(), name: "List User"),
         MenuItem(id: UUID(), name: "Card")
     ]
     var body: some View {
         NavigationView{
-            List(items) { item in
-                NavigationLink(destination: destinationView(item:item)) {
-                    Text(item.name)
-                        .font(.body)
+            Form{
+                HStack{
+                    Text("Dark Appereance")
+                    Spacer()
+                    Toggle("Dark Mode", isOn: $isDarkMode)
+                }
+                List(items) { item in
+                    NavigationLink(destination: destinationView(item:item)) {
+                        Text(item.name)
+                            .font(.body)
+                    }
                 }
             }
         }
