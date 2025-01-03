@@ -79,8 +79,16 @@ class UserViewModel: ObservableObject {
             return
         }
 
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".jpg")
+        do {
+            try imageData.write(to: tempURL)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+
         let storageRef = Storage.storage().reference().child(path)
-        storageRef.putData(imageData, metadata: nil) { _, error in
+        let uploadTask = storageRef.putFile(from: tempURL, metadata: nil) { _, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -92,6 +100,22 @@ class UserViewModel: ObservableObject {
                 } else if let url = url {
                     completion(.success(url.absoluteString))
                 }
+            }
+        }
+
+        uploadTask.observe(.progress) { snapshot in
+            let progress = snapshot.progress?.fractionCompleted ?? 0
+            print("Upload progress: \(progress * 100)%")
+        }
+
+        uploadTask.observe(.success) { _ in
+            print("Upload completed successfully")
+        }
+
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error {
+                print("Upload failed: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }
